@@ -1,5 +1,5 @@
 # MSDNOvaryVis
-Source code and resources needed to build the projects described in the following MSDN Magazine articles by Will Stott:
+Source code and resources needed to build the projects described in the following MSDN Magazine articles by Will Stott. Each project is complete in its own right and the later ones build on the earlier ones.
 
 ## MSDN.OvaryVis Mag Article Dec18
 ### Article
@@ -11,8 +11,8 @@ Source code and resources needed to build the projects described in the followin
 * Using an Azure Function to implement periodic processing
 * Provisioning resources using the Azure Portal PowerShell Console
 ### Visual Studion Solution and Source Code:
-* [link] - extends the MSDN.OvaryVis Mag Article Nov18 Project (below)
-### Command for creating Azure Resources:
+* [MSDNOvaryVis Solution](https://github.com/wpqs/MSDNOvaryVis/tree/master/MSDN.OvaryVis%20Mag%20Article%20Dec18/MSDNOvaryVis) - extends the MSDN.OvaryVis Mag Article Nov18 Project (below)
+### File containing list of commands for creating Azure Resources:
 * [link]
 
 ## MSDN.OvaryVis Mag Article Nov18
@@ -25,8 +25,8 @@ Source code and resources needed to build the projects described in the followin
 * Use of Entity Framework to provide database access to an Azure Function
 * Provisioning resources using Azure Cloud Shell
 ### Visual Studion Solution and Source Code
-* [link] - extends the MSDN.OvaryVis BaseProject (below)
-### Command for creating Azure Resources
+* [MSDNOvaryVis Solution](https://github.com/wpqs/MSDNOvaryVis/tree/master/MSDN.OvaryVis%20Mag%20Article%20Nov18/MSDNOvaryVis) - extends the MSDN.OvaryVis BaseProject (below)
+### File containing list of commands for creating Azure Resources
 * [link]
 
 The above projects were developed from a simple Web site which was built using ASP.NET 2.1 MVC WebApp with Entity Framework and SQL Server. An online only article describing how to build this website together with its source code and commands for creating the necessary Azure resources can be found below: 
@@ -41,6 +41,6 @@ The above projects were developed from a simple Web site which was built using A
 * Use of Entity Framework Core to create a database for the Web App and provide the required access
 * Provisioning resources for the Web App and SQL Server database using Azure Portal Powershell Console
 ### Visual Studion Solution and Source Code
-* [link]
-### Command for creating Azure Resources
+* [MSDNOvaryVis Solution](https://github.com/wpqs/MSDNOvaryVis/tree/master/MSDN.OvaryVis%20BaseProject/MSDNOvaryVis)
+### File containing list of commands for creating Azure Resources
 * [link]
