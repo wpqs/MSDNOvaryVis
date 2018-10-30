@@ -14,7 +14,7 @@ You can find addition information in the [project wiki](https://github.com/wpqs/
 ### Visual Studion Solution and Source Code:
 * [MSDNOvaryVis Solution](https://github.com/wpqs/MSDNOvaryVis/tree/master/MSDN.OvaryVis%20Mag%20Article%20Dec18/MSDNOvaryVis) - extends the MSDN.OvaryVis Mag Article Nov18 Project (below)
 ### File containing list of commands for creating Azure Resources:
-* [link]
+* [AzureResCmds.txt](https://github.com/wpqs/MSDNOvaryVis/blob/master/MSDN.OvaryVis%20Mag%20Article%20Dec18/AzureResCmds.txt)
 
 ## MSDN.OvaryVis Mag Article Nov18
 ### Article
@@ -28,7 +28,7 @@ You can find addition information in the [project wiki](https://github.com/wpqs/
 ### Visual Studion Solution and Source Code
 * [MSDNOvaryVis Solution](https://github.com/wpqs/MSDNOvaryVis/tree/master/MSDN.OvaryVis%20Mag%20Article%20Nov18/MSDNOvaryVis) - extends the MSDN.OvaryVis BaseProject (below)
 ### File containing list of commands for creating Azure Resources
-* [link]
+* [AzureResCmds.txt](https://github.com/wpqs/MSDNOvaryVis/blob/master/MSDN.OvaryVis%20Mag%20Article%20Nov18/AzureResCmds.txt)
 
 The above projects were developed from a simple Web site which was built using ASP.NET 2.1 MVC WebApp with Entity Framework and SQL Server. An online only article describing how to build this website together with its source code and commands for creating the necessary Azure resources can be found below: 
 
@@ -44,4 +44,4 @@ The above projects were developed from a simple Web site which was built using A
 ### Visual Studion Solution and Source Code
 * [MSDNOvaryVis Solution](https://github.com/wpqs/MSDNOvaryVis/tree/master/MSDN.OvaryVis%20BaseProject/MSDNOvaryVis)
 ### File containing list of commands for creating Azure Resources
-* [link]
+* [AzureResCmds.txt](https://github.com/wpqs/MSDNOvaryVis/blob/master/MSDN.OvaryVis%20BaseProject/AzureResCmds.txt)
