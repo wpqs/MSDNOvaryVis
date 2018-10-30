@@ -2,8 +2,8 @@
 Source code and resources needed to build the projects described in the following MSDN Magazine articles by Will Stott:
 
 ## MSDN.OvaryVis Mag Article Dec18
-**Using Azure Containers to Provide an On-Demand R Server**
-(only available after publication on 1st Dec)
+### Article
+* [Using Azure Containers to Provide an On-Demand R Server](http://msdn.microsoft.com/magazine/xxx) (only available after publication on 1st Dec)
 ### Summary: 
 * Using C# with Azure.Management.Fluent and an Azure Function (timer trigger) to start and stop an Azure Container Instance provisioned from an image on Docker Hub
 ### Technologies discussed:
@@ -17,7 +17,7 @@ Source code and resources needed to build the projects described in the followin
 
 ## MSDN.OvaryVis Mag Article Nov18
 ### Article
-***[Web Site Background Processing with Azure Service Bus Queues](http://msdn.microsoft.com/magazine/mt830371)**
+* [Web Site Background Processing with Azure Service Bus Queues](http://msdn.microsoft.com/magazine/mt830371)
 ### Summary: 
 * How to perform long-running processing for an ASP.NET Core 2.1 Web App in the background using Azure Functions and a Service Bus queue
 ### Technologies discussed:
@@ -32,8 +32,8 @@ Source code and resources needed to build the projects described in the followin
 The above projects were developed from a simple Web site which was built using ASP.NET 2.1 MVC WebApp with Entity Framework and SQL Server. An online only article describing how to build this website together with its source code and commands for creating the necessary Azure resources can be found below: 
 
 ## MSDN.OvaryVis BaseProject
-### Article (online only; download to access hyperlinks)
-**[ASP.NET Core 2.1 with SQL Server Deployed to Azure](https://github.com/wpqs/MSDNOvaryVis/blob/master/MSDN.OvaryVis%20BaseProject/ASPNETWebAppWithSQLServer.pdf)** 
+### Article (online only)
+* [ASP.NET Core 2.1 with SQL Server Deployed to Azure](https://github.com/wpqs/MSDNOvaryVis/blob/master/MSDN.OvaryVis%20BaseProject/ASPNETWebAppWithSQLServer.pdf) - download to access hyperlinks
 ### Summary: 
 * Step-by-step instructions for building a simple ASP.NET Core 2.1 MVC Web App and SQL Database as well provisioning the resources needed to publish them to the Azure Cloud
 ### Technologies discussed
