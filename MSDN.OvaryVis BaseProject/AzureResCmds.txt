@@ -1,0 +1,66 @@
+AzureResCmds.txt - PowerShell CLI Commands for provisioning and configuring the Azure resources needed by the MSDN.OvaryVis BaseProject
+=======================================================================================================================================
+
+XXX msdnovaryvisdbsvr Admin User name - see WebApp and SQL Server and Vault for value
+YYY msdnovaryvisdbsvr Admin User password - see WebApp and SQL Server and Vault for value
+AAA is the IP address of your PC - find in msdnovaryvisdbsvr - Firewalls and virtual networks
+
+
+appsettings.json
+----------------
+
+change CCC
+
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=Msdn.OvaryVisDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+ "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+Azure MSDNOvaryVisWebApp application settings
+---------------------------------------------
+
+DefaultConnection: (copied from Azure SQL Database)
+
+
+WebApp and SQL Server
+---------------------
+
+Notes:
+1. webapp create -name MSDNOvaryVisWebApp must be unique as it forms part of the website's URL 
+2. sql server create --name msdnovaryvisdbsvr must be unique as it is publically accessible and can only be made up of lowercase letters 'a'-'z', the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the name
+3. Take note of the database server name ( msdnovaryvisdbsvr.database.windows.net) as it is needed when using MSSMS to connect with your Azure database
+4. az sql server firewall-rule create --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0 allows access to Azure Services - see switch in msdnovaryvisdbsvr - Firewalls and virtual netwworks
+5. az sql server firewall-rule create --start-ip-address AAA --end-ip-address AAA  where AAA is the IP address of your local PC. This allows you to use MSSMS to access the Azure database server, but the rule needs to be updated if your IP address changes - mine does each day. 
+6. Copy the result of az sql db shown-connection-string and replace <username> with XXX and <password> with YYY before issuing az webapp config connection-string set
+	Server=tcp:msdnovaryvisdbsvr.database.windows.net,1433;Database=Msdn.OvaryVisDb;User ID=<username>;Password=<password>;Encrypt=true;Connection Timeout=30;
+7. When debugging set local connection string if local DB is needed 'Server=(localdb)\\mssqllocaldb;Database=Msdn.OvaryVisDb;Trusted_Connection=True;MultipleActiveResultSets=true'
+
+Commands:
+
+az account set --subscription MsdnOvaryVis
+az group create --name resMSDNOvaryVis --location "WestEurope"
+az appservice plan create --name MSDNOvaryVisPlan --resource-group resMSDNOvaryVis --location "WestEurope" --sku FREE
+az webapp create --name MSDNOvaryVisWebApp --plan MSDNOvaryVisPlan --resource-group resMSDNOvaryVis
+az sql server create --name msdnovaryvisdbsvr --resource-group resMSDNOvaryVis --location "WestEurope" --admin-user XXX --admin-password YYY
+az sql server firewall-rule create --server msdnovaryvisdbsvr --resource-group resMSDNOvaryVis --name AllowMyPC --start-ip-address AAA --end-ip-address AAA
+az sql server firewall-rule create --server msdnovaryvisdbsvr --resource-group resMSDNOvaryVis --name AllowAzure --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+az sql db create --server msdnovaryvisdbsvr --resource-group resMSDNOvaryVis --name Msdn.OvaryVisDb --service-objective Basic
+az sql db show-connection-string --name Msdn.OvaryVisDb --server msdnovaryvisdbsvr --client ado.net --output tsv
+az webapp config connection-string set --connection-string-type SQLAzure --name MSDNOvaryVisWebApp --resource-group resMSDNOvaryVis --settings DefaultConnection='Server=tcp:msdnovaryvisdbsvr.database.windows.net,1433;Database=Msdn.OvaryVisDb;User ID=XXX;Password=YYY;Encrypt=true;Connection Timeout=30;' 
+
+
+[end]
+
+
+
+
+
+
+
