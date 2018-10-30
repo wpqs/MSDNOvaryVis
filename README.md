@@ -16,7 +16,8 @@ Source code and resources needed to build the projects described in the followin
 * [link]
 
 ## MSDN.OvaryVis Mag Article Nov18
-**Web Site Background Processing with Azure Service Bus Queues**
+### Article
+***[Web Site Background Processing with Azure Service Bus Queues](http://msdn.microsoft.com/magazine/mt830371)**
 ### Summary: 
 * How to perform long-running processing for an ASP.NET Core 2.1 Web App in the background using Azure Functions and a Service Bus queue
 ### Technologies discussed:
@@ -31,7 +32,8 @@ Source code and resources needed to build the projects described in the followin
 The above projects were developed from a simple Web site which was built using ASP.NET 2.1 MVC WebApp with Entity Framework and SQL Server. An online only article describing how to build this website together with its source code and commands for creating the necessary Azure resources can be found below: 
 
 ## MSDN.OvaryVis BaseProject
-**ASP.NET Core 2.1 with SQL Server Deployed to Azure** 
+### Article (online only; download to access hyperlinks)
+**[ASP.NET Core 2.1 with SQL Server Deployed to Azure](https://github.com/wpqs/MSDNOvaryVis/blob/master/MSDN.OvaryVis%20BaseProject/ASPNETWebAppWithSQLServer.pdf)** 
 ### Summary: 
 * Step-by-step instructions for building a simple ASP.NET Core 2.1 MVC Web App and SQL Database as well provisioning the resources needed to publish them to the Azure Cloud
 ### Technologies discussed
