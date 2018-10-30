@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{53698BEC-3
 	ProjectSection(SolutionItems) = preProject
 		..\ASPNETWebAppWithSQLServer.pdf = ..\ASPNETWebAppWithSQLServer.pdf
 		..\AzureResCmds.txt = ..\AzureResCmds.txt
+		..\..\README.md = ..\..\README.md
 	EndProjectSection
 EndProject
 Global
