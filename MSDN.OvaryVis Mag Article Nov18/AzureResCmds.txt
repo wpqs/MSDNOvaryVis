@@ -1,17 +1,13 @@
-AzureResCmds.txt - PowerShell CLI Commands for provisioning and configuring the Azure resources needed by the MSDNOvaryVis Project
-==================================================================================================================================
+AzureResCmds.txt - PowerShell CLI Commands for provisioning and configuring the Azure resources needed by the MSDN.OvaryVis Mag Article Nov18 Project
+=====================================================================================================================================================
 
-ZZZ Tenant Id - see Creating Security Principal and Vault for value
 XXX msdnovaryvisdbsvr Admin User name - see WebApp and SQL Server and Vault for value
 YYY msdnovaryvisdbsvr Admin User password - see WebApp and SQL Server and Vault for value
 AAA is the IP address of your PC - find in msdnovaryvisdbsvr - Firewalls and virtual networks
-CCC ServiceBus RootManageSharedAccessKey - see Azure Functions and ServiceBus
-DDD Security Principal Id - see Creating Security Principal and Vault for value
-EEE Security Principal password - see Creating Security Principal and Vault for value
-III TenentID - see Creating Security Principal and Vault for value
 FFF Storage Account Key as copied from OvaryVisFnApp Azure application settings
-GGG Docker.Hub account name
-HHH Docker.Hub account password
+CCC ServiceBus RootManageSharedAccessKey - see Azure Functions and ServiceBus
+MMM Primary connection string for Service Bus Queue i.e. Endpoint=sb://msdnovaryvissbq.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=CCC'
+
 
 appsettings.json
 ----------------
@@ -46,7 +42,7 @@ DefaultConnection: (copied from Azure SQL Database)
 local.settings.json
 -------------------
 
-change FFF,CCC,GGG,HHH,DDD,EEE,ZZZ
+change FFF,CCC
 
 {
   "IsEncrypted": false,
@@ -55,17 +51,6 @@ change FFF,CCC,GGG,HHH,DDD,EEE,ZZZ
     "AzureWebJobsDashboard": "DefaultEndpointsProtocol=https;AccountName=msdnovaryvisstorageac;AccountKey=FFF;BlobEndpoint=https://msdnovaryvisstorageac.blob.core.windows.net/;TableEndpoint=https://msdnovaryvisstorageac.table.core.windows.net/;QueueEndpoint=https://msdnovaryvisstorageac.queue.core.windows.net/;FileEndpoint=https://msdnovaryvisstorageac.file.core.windows.net/",
     "AzureWebJobsServiceBus": "Endpoint=sb://msdnovaryvis.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=CCC",
     "AzureServiceBusQueueName": "dimsubmission",
-    "DockerHubUserName": "GGG",
-    "DockerHubPassword": "HHH",
-    "ClassifierRegion": "WestEurope",
-    "ClassifierResourceGroup": "resMSDNOvaryVis",
-    "ClassifierContainerName": "ovaryclassifier",
-    "ClassifierImage": "wpqs/ovaryclassifier",
-    "ClassifierCpus": 1,
-    "ClassifierMemoryGB": 1,
-    "SecPrincipalId": "DDD",
-    "SecPrincipalKey": "EEE",
-    "TenantId": "ZZZ"
   },
   "ConnectionStrings": {
     "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=Msdn.OvaryVisDb;Trusted_Connection=True;MultipleActiveResultSets=true"
@@ -113,7 +98,10 @@ Notes:
 3. manually set the defaultconnection string for database - copy from webapp
 3. Do not issue az functionapp start until AFTER publishing your Azure Function Project from Visual Studio - the Azure Function must be stopped for publishing to succeed
 
+
 Commands:
+
+replace MMM with Primary connection string for Service Bus Queue
 
 az account set --subscription MsdnOvaryVis
 az servicebus namespace create  --name MSDNOvaryVisSBQ --location "WestEurope" --resource-group resMSDNOvaryVis --sku Basic
@@ -122,67 +110,16 @@ az storage account create --name msdnovaryvisstorageac --resource-group resMSDNO
 az functionapp create --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --storage-account msdnovaryvisstorageac --consumption-plan-location westeurope  
 az functionapp stop --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis 
 
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'FUNCTIONS_EXTENSION_VERSION=2.0.12050.0'
 az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'AzureServiceBusQueueName=dimsubmission'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'AzureWebJobsServiceBus=Endpoint=sb://msdnovaryvissbq.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=CCC'
+az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'AzureWebJobsServiceBus=MMM'
+az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'FUNCTIONS_EXTENSION_VERSION=2.0.12050.0'
+
 az webapp config appsettings set --name MSDNOvaryVisWebApp --resource-group resMSDNOvaryVis --settings 'OvaryVisServiceBus:QueueName=dimsubmission'
-az webapp config appsettings set --name MSDNOvaryVisWebApp --resource-group resMSDNOvaryVis --settings 'OvaryVisServiceBus:Connection=Endpoint=sb://msdnovaryvissbq.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=CCC'
+az webapp config appsettings set --name MSDNOvaryVisWebApp --resource-group resMSDNOvaryVis --settings 'OvaryVisServiceBus:Connection=MMM'
 
 [wait until after publishing from Visual Studio]
 
 az functionapp start --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis 
-
-
-Creating Container Image
-------------------------
-
-Notes:
-1. only needed for testing - MSDNOvaryVisFnApp creates this image as required and deletes it if not used > 10 mins
-2. create an account on Docker.Hub to get username GGG and password HHH
-
-az container create --image wpqs/ovaryclassifier --name ovaryvisr --resource-group resMSDNOvaryVis --ip-address Public --ports 80 --cpu 1 --memory 1 --registry-login-server index.docker.io --registry-username GGG --registry-password HHH
-
-Azure Function Application Settings for Server
-----------------------------------------------
-
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'ClassifierContainerName=ovaryclassifier'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'ClassifierCpus=1'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'ClassifierImage=wpqs/ovaryclassifier'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'ClassifierMemoryGB=1'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'ClassifierRegion=WestEurope'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'ClassifierResourceGroup=resMSDNOvaryVis'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'DockerHubUserName=GGG'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'DockerHubPassword=HHH'
-
-
-
-Creating Security Principal
----------------------------
-Notes:
-1.	copy DDD ApplicationId returned by $sp | Select DisplayName, ApplicationId into local.settings.json "ClassifierSecPrincipalId"
-2.  copy EEE used as plain text password into local.settings.json "ClassifierSecPrincipalKey"
-3.  copy III TenantID returned by Get-AzureRmSubscription -SubscriptionName MsdnOvaryVis into local.settings.json "ClassifierTenantId"
-
-
-Commands:
-
-az account set --subscription MsdnOvaryVis
-
-$password = ConvertTo-SecureString "EEE" -AsPlainText -Force
-$sp = New-AzureRmADServicePrincipal -DisplayName "MSDNOvaryVisApp" -Password $password
-New-AzureRmRoleAssignment -ServicePrincipalName $sp.ApplicationId -RoleDefinitionName Contributor
-$sp | Select DisplayName, ApplicationId
-Get-AzureRmSubscription -SubscriptionName MsdnOvaryVis
-
-Azure Function Application Settings for Security Principal
-----------------------------------------------------------
-
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'SecPrincipalId=DDD'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'SecPrincipalKey=EEE'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'TenantId=III'
-
-
-
 
 
 

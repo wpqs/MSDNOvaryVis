@@ -1,0 +1,40 @@
+﻿@model OvaryVisWebApp.Models.OvaryVis
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h3>Scan Form</h3>
+<form id="ScanForm" asp-controller="Home" asp-action="Index" method="post" class="form-horizontal" >
+    <div class="form-group">
+        <label asp-for="D1mm" class="col-md-2 control-label"></label>
+        <div class="col-md-4">
+            <input asp-for="D1mm" class="form-control" />
+            <span asp-validation-for="D1mm" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="D2mm" class="col-md-2 control-label"></label>
+        <div class="col-md-4">
+            <input asp-for="D2mm" class="form-control" />
+            <span asp-validation-for="D2mm" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="D3mm" class="col-md-2 control-label"></label>
+        <div class="col-md-4">
+            <input asp-for="D3mm" class="form-control" />
+            <span asp-validation-for="D3mm" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default"  />
+        </div>
+    </div>
+</form>
+
+
+
+
+

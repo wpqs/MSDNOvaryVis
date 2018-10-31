@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <UserSecretsId>3f2948ac-ea3d-4fed-a3d0-b866e60cdbb1</UserSecretsId>
+    <UserSecretsId>8fb72df9-8e0c-4c50-b62f-420e73e40dc7</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="3.1.0" />
   </ItemGroup>
 
 </Project>

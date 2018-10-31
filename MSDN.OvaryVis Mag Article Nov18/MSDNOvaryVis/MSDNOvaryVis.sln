@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OvaryVisWebApp", "OvaryVisWebApp\OvaryVisWebApp.csproj", "{87DE85EF-F939-4713-9E2D-D82B9452F8BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{6D383B68-CEFA-4154-B582-77A0DEDA28CF}"
+	ProjectSection(SolutionItems) = preProject
+		..\AzureResCmds.txt = ..\AzureResCmds.txt
+		..\..\README.md = ..\..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvaryVisFnApp", "OvaryVisFnApp\OvaryVisFnApp.csproj", "{52E9A616-82CE-4852-BCFC-6C780C44E1B4}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87DE85EF-F939-4713-9E2D-D82B9452F8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87DE85EF-F939-4713-9E2D-D82B9452F8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87DE85EF-F939-4713-9E2D-D82B9452F8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87DE85EF-F939-4713-9E2D-D82B9452F8BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E9A616-82CE-4852-BCFC-6C780C44E1B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E9A616-82CE-4852-BCFC-6C780C44E1B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E9A616-82CE-4852-BCFC-6C780C44E1B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E9A616-82CE-4852-BCFC-6C780C44E1B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
