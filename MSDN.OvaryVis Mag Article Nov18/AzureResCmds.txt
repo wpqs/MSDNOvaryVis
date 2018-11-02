@@ -112,7 +112,9 @@ az functionapp stop --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis
 
 az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'AzureServiceBusQueueName=dimsubmission'
 az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'AzureWebJobsServiceBus=MMM'
-az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'FUNCTIONS_EXTENSION_VERSION=2.0.12050.0'
+az functionapp config appsettings set --name MSDNOvaryVisFnApp --resource-group resMSDNOvaryVis --settings 'FUNCTIONS_EXTENSION_VERSION=~1'
+use Azure Portal to set MSDNOvaryVisFnApp's connection string as DefaultConnection 'Server=tcp:msdnovaryvisdbsvr.database.windows.net,1433;Database=Msdn.OvaryVisDb;User ID=XXX;Password=YYY;Encrypt=true;Connection Timeout=30;' 
+
 
 az webapp config appsettings set --name MSDNOvaryVisWebApp --resource-group resMSDNOvaryVis --settings 'OvaryVisServiceBus:QueueName=dimsubmission'
 az webapp config appsettings set --name MSDNOvaryVisWebApp --resource-group resMSDNOvaryVis --settings 'OvaryVisServiceBus:Connection=MMM'
