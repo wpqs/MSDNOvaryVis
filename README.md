@@ -1,7 +1,7 @@
 # MSDNOvaryVis
 Source code and resources needed to build the projects described in the following MSDN Magazine articles by Will Stott. Each project is complete in its own right and the later ones build on the earlier ones.
 
-### Additional information given in the [project wiki](https://github.com/wpqs/MSDNOvaryVis/wiki)
+* ### Additional information given in the [project wiki](https://github.com/wpqs/MSDNOvaryVis/wiki)
 
 ## MSDN.OvaryVis Mag Article Dec18
 ### Article
