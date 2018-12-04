@@ -5,7 +5,7 @@ Source code and resources needed to build the projects described in the followin
 
 ## MSDN.OvaryVis Mag Article Dec18
 ### Article
-* [Using Azure Containers to Provide an On-Demand R Server](http://msdn.microsoft.com/magazine/xxx) (only available after publication on 1st Dec)
+* [Using Azure Containers to Provide an On-Demand R Server](https://msdn.microsoft.com/en-us/magazine/mt832863)
 ### Summary: 
 * Using C# with Azure.Management.Fluent and an Azure Function (timer trigger) to start and stop an Azure Container Instance provisioned from an image on Docker Hub
 ### Technologies discussed:
